@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+
+export (PackedScene) var Bullet
+
 var inputVelocity = Vector2(0,0)
 var velocity = Vector2(0,0)
 var acceleration = 0.1	# Acceleration
@@ -61,4 +64,13 @@ func get_input():
 	else:
 		# If there's no input, slow down to (0, 0)
 		velocity = velocity.linear_interpolate(Vector2.ZERO, friction)
-	
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_released("shoot"):
+		shoot()
+		
+func shoot():
+	var b = Bullet.instance()
+	owner.add_child(b)
+	b.transform = $EndOfGun.global_transform
