@@ -45,3 +45,17 @@ func _physics_process(delta):
 	velocity = Vector2(clamp(velocity.x, -maxVelocity, maxVelocity), clamp(velocity.y, -maxVelocity, maxVelocity))	# Clamping to limit max speed
 	move_and_collide(velocity)
 	#print(velocity) # Used to find deadzone
+	wrap()
+	
+func wrap():
+	if position.x <= -15:
+		position.x = get_viewport_rect().size.x
+
+	if position.x > get_viewport_rect().size.x + 15:
+		position.x = 0
+
+	if position.y <= -15:
+		position.y = get_viewport_rect().size.y
+
+	if position.y > get_viewport_rect().size.y + 15:
+		position.y = 0
