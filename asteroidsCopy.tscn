@@ -20,5 +20,3 @@ __meta__ = {
 [node name="PlayerKineticBody" parent="." instance=ExtResource( 3 )]
 position = Vector2( 229.764, 175.85 )
 Bullet = ExtResource( 2 )
-
-[node name="Bullet" parent="." instance=ExtResource( 2 )]

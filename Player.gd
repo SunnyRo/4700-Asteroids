@@ -11,6 +11,7 @@ var speed = 400
 var deadzone = 0.2  	# If you ever change friction, Find new deadzone and change deadzone
 var rotationDir = 0
 var rotationSpeed = .1
+var shootCD = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,10 +28,8 @@ func _physics_process(delta):
 	rotation += rotationDir * rotationSpeed
 	velocity = move_and_slide(velocity)
 	wrap()
-	# Movement
-	#velocity = Vector2(clamp(velocity.x, -maxVelocity, maxVelocity), clamp(velocity.y, -maxVelocity, maxVelocity))	# Clamping to limit max speed
-	
-	#print(velocity) # Used to find deadzone
+	if shootCD > 0:
+		shootCD -= 1
 	
 	
 func wrap():
@@ -64,13 +63,13 @@ func get_input():
 	else:
 		# If there's no input, slow down to (0, 0)
 		velocity = velocity.linear_interpolate(Vector2.ZERO, friction)
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_released("shoot"):
+		
+	if Input.is_action_pressed("shoot"):
 		shoot()
 		
 func shoot():
-	var b = Bullet.instance()
-	owner.add_child(b)
-	b.transform = $EndOfGun.global_transform
+	if shootCD == 0:
+		var b = Bullet.instance()
+		owner.add_child(b)
+		b.transform = $EndOfGun.global_transform
+		shootCD = 5
