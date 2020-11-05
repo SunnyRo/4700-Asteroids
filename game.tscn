@@ -94,3 +94,7 @@ texture = ExtResource( 3 )
 
 [node name="Asteroid" parent="." instance=ExtResource( 1 )]
 position = Vector2( 751.159, 408.953 )
+minSpeed = 20
+maxSpeed = 80
+minRotationRate = -10
+maxRotationRate = 10
