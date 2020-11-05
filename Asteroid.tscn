@@ -7,10 +7,6 @@
 "damageable",
 ]]
 script = ExtResource( 1 )
-minSpeed = 50.0
-maxSpeed = 100.0
-minRotationRate = -20.0
-maxRotationRate = 20.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
