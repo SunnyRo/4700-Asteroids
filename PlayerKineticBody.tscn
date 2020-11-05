@@ -40,3 +40,11 @@ position = Vector2( 0.00993276, -0.0105862 )
 rotation = 1.5708
 scale = Vector2( 0.19996, 0.249868 )
 texture = ExtResource( 2 )
+
+[node name="Gun" type="Node2D" parent="."]
+
+[node name="Left" type="Node2D" parent="Gun"]
+position = Vector2( 15.1361, -8.04106 )
+
+[node name="Right" type="Node2D" parent="Gun"]
+position = Vector2( 15.2412, 7.98853 )

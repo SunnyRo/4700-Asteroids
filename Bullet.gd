@@ -30,3 +30,10 @@ func _on_Bullet_body_entered(body):
 	if body.is_in_group("mobs"):
 		body.queue_free()
 	queue_free()
+
+# when another area enter this area bullet
+func _on_Bullet_area_entered(area):
+	if area.is_in_group("damageable"):
+		area.damage(1)
+		queue_free()
+		

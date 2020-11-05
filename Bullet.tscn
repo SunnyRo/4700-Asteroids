@@ -21,3 +21,4 @@ scale = Vector2( 0.0159983, 0.00801892 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 120, 132, 252, 984 )
+[connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]

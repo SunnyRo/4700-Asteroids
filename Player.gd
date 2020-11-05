@@ -1,8 +1,9 @@
 extends KinematicBody2D
 
 
-export (PackedScene) var Bullet
+var Bullet = preload("res://Bullet.tscn")
 
+onready var Gun := $Gun
 var inputVelocity = Vector2(0,0)
 var velocity = Vector2(0,0)
 var acceleration = 0.1	# Acceleration
@@ -69,7 +70,8 @@ func get_input():
 		
 func shoot():
 	if shootCD == 0:
-		var b = Bullet.instance()
-		owner.add_child(b)
-		b.transform = $EndOfGun.global_transform
-		shootCD = 5
+		for child in Gun.get_children():
+			var b = Bullet.instance()
+			get_tree().current_scene.add_child(b)
+			b.transform = child.global_transform
+			shootCD = 5
