@@ -19,7 +19,7 @@ func _ready():
 	
 	
 	rota = randi()%361
-	print(rota)
+	#print(rota)
 	rota = deg2rad(rota)
 	velocity = Vector2(speed,0).rotated(rota)
 	rotationRate = rand_range(minRotationRate,maxRotationRate)
@@ -53,3 +53,8 @@ func wrap():
 
 	if position.y > get_viewport_rect().size.y + 15:
 		position.y = 0
+
+
+func _on_Asteroid_body_entered(body):
+	body.gethit()
+	queue_free()

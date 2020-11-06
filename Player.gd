@@ -13,7 +13,7 @@ var deadzone = 0.2  	# If you ever change friction, Find new deadzone and change
 var rotationDir = 0
 var rotationSpeed = .1
 var shootCD = 5
-
+var waiting = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -24,7 +24,6 @@ func _ready():
 #	pass
 
 func _physics_process(delta):
-	
 	get_input()
 	rotation += rotationDir * rotationSpeed
 	velocity = move_and_slide(velocity)
@@ -75,3 +74,23 @@ func shoot():
 			get_tree().current_scene.add_child(b)
 			b.transform = child.global_transform
 			shootCD = 5
+func gethit():
+	if !waiting:
+		waiting = true
+		set_physics_process(false)
+		set_process_input(false)
+		visible = false
+		$TimerSpawnBack.start()
+		print("timmer starts")
+	
+
+
+func _on_TimerSpawnBack_timeout():
+	print("timmer stopped")
+	set_physics_process(true)
+	set_process_input(true)
+	visible = true
+	position.x = get_viewport_rect().size.x/2
+	position.y = get_viewport_rect().size.y/2
+	$TimerSpawnBack.stop()
+	waiting = false

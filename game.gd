@@ -28,6 +28,5 @@ func asteroidSpawning():
 	screen_edges.append(Vector2(rand_range(0,get_viewport().size.x),600))
 	screen_edges.append(Vector2(1024,rand_range(0,get_viewport().size.y)))
 	asteroid.position = screen_edges[rand_range(0,screen_edges.size())]
-	#print(asteroid.position)
 	screen_edges.clear()
 	add_child(asteroid)

@@ -21,4 +21,5 @@ polygon = PoolVector2Array( -6.10849, -7.7106, -4.04832, -10.8945, -0.489841, -1
 position = Vector2( 0.280931, 0.327754 )
 scale = Vector2( 1.57123, 1.53845 )
 [connection signal="area_entered" from="." to="." method="_on_Asteroid_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Asteroid_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
