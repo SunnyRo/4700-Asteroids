@@ -1,31 +1,28 @@
 extends Area2D
 
 
-export var minSpeed = 20
-export var maxSpeed = 80
+export var minSpeed = 40
+export var maxSpeed = 140
 export var minRotationRate = -10
 export var maxRotationRate = 10
 
 export var life: int = 1
 
 var velocity = Vector2(0,0)
-var rota = Vector2(0,0)
+var rota = 0
+var speed = 0
 
 var rotationRate: float = 0
 # generate random # of speed and rotationRate
 func _ready():
-	velocity.y = rand_range(minSpeed,maxSpeed)
-	velocity.x = rand_range(minSpeed,maxSpeed)
-	rotationRate = rand_range(minRotationRate,maxRotationRate)
-	rota.y = randi()%2
-	rota.x = randi()%2
-	print(rota)
-	if rota.x == 0:
-		velocity.x *= -1
-	if rota.y == 0:
-		velocity.y *= -1
-
+	speed = rand_range(minSpeed,maxSpeed)
 	
+	
+	rota = randi()%361
+	print(rota)
+	rota = deg2rad(rota)
+	velocity = Vector2(speed,0).rotated(rota)
+	rotationRate = rand_range(minRotationRate,maxRotationRate)
 	
 
 func _physics_process(delta):
