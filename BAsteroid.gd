@@ -6,8 +6,8 @@ export var maxSpeed = 140
 export var minRotationRate = -10
 export var maxRotationRate = 10
 
-export var life: int = 3
-
+export var life: int = 5
+var SAsteroids = preload("res://SAsteroid.tscn")
 var velocity = Vector2(0,0)
 var rota = 0
 var speed = 0
@@ -36,6 +36,13 @@ func _physics_process(delta):
 func damage(amount: int):
 	life -= amount
 	if life <= 0:
+		var asteroid1 = SAsteroids.instance()
+		asteroid1.position = position
+		get_tree().current_scene.add_child(asteroid1)
+		var asteroid2 = SAsteroids.instance()
+		asteroid2.position = position
+		get_tree().current_scene.add_child(asteroid2)
+		
 		queue_free()
 
 
@@ -53,6 +60,8 @@ func wrap():
 		position.y = 0
 
 
-func _on_Asteroid_body_entered(body):
+func _on_BAsteroid_body_entered(body):
 	body.gethit()
 	queue_free()
+
+

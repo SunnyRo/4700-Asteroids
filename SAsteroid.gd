@@ -6,7 +6,7 @@ export var maxSpeed = 140
 export var minRotationRate = -10
 export var maxRotationRate = 10
 
-export var life: int = 3
+export var life: int = 4
 
 var velocity = Vector2(0,0)
 var rota = 0

@@ -5,7 +5,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 var screen_edges : Array = []
-var asteroids = preload("res://Asteroid.tscn")
+var BAsteroids = preload("res://BAsteroid.tscn")
 var angular_speed = 0
 var count = 0
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +13,7 @@ func _ready():
 		pass
 	
 func _process(delta):
-	if count == 25:
+	if count == 150:
 		asteroidSpawning()
 		count = 0
 	count += 1
@@ -21,7 +21,7 @@ func _process(delta):
 	
 
 func asteroidSpawning():
-	var asteroid = asteroids.instance()
+	var asteroid = BAsteroids.instance()
 	screen_edges.append(Vector2.ZERO)
 	screen_edges.append(Vector2(rand_range(0,get_viewport().size.x),0))
 	screen_edges.append(Vector2(0,rand_range(0,get_viewport().size.y)))
