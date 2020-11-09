@@ -6,7 +6,7 @@ export var maxSpeed = 140
 export var minRotationRate = -10
 export var maxRotationRate = 10
 
-export var life: int = 5
+export var life: int = 1
 var SAsteroids = preload("res://SAsteroid.tscn")
 var velocity = Vector2(0,0)
 var rota = 0
@@ -38,10 +38,10 @@ func damage(amount: int):
 	if life <= 0:
 		var asteroid1 = SAsteroids.instance()
 		asteroid1.position = position
-		get_tree().current_scene.add_child(asteroid1)
+		get_tree().current_scene.call_deferred("add_child", asteroid1)
 		var asteroid2 = SAsteroids.instance()
 		asteroid2.position = position
-		get_tree().current_scene.add_child(asteroid2)
+		get_tree().current_scene.call_deferred("add_child", asteroid2)
 		
 		queue_free()
 

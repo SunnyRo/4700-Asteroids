@@ -13,12 +13,10 @@ func _ready():
 		pass
 	
 func _process(delta):
-	if count == 150:
+	if count == 60:
 		asteroidSpawning()
 		count = 0
 	count += 1
-	
-	
 
 func asteroidSpawning():
 	var asteroid = BAsteroids.instance()
