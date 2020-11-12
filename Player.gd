@@ -89,6 +89,7 @@ func _on_TimerSpawnBack_timeout():
 	set_physics_process(true)
 	set_process_input(true)
 	visible = true
+	velocity = Vector2(0,0)
 	position.x = get_viewport_rect().size.x/2
 	position.y = get_viewport_rect().size.y/2
 	$TimerSpawnBack.stop()
