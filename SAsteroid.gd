@@ -13,6 +13,9 @@ var rota = 0
 var speed = 0
 
 var rotationRate: float = 0
+
+onready var bullet_node = get_tree().get_root().find_node("ScoreNum",true,false)
+onready var sScore = 0
 # generate random # of speed and rotationRate
 func _ready():
 	speed = rand_range(minSpeed,maxSpeed)
@@ -36,6 +39,8 @@ func _physics_process(delta):
 func damage(amount: int):
 	life -= amount
 	if life <= 0:
+		sScore += 10
+		bullet_node.update_score(sScore)
 		queue_free()
 
 

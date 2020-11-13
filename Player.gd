@@ -15,6 +15,8 @@ var shootCD = 5
 var waiting = false
 var jetPlaying = false
 
+signal lost_life
+export var lives = 3
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -96,6 +98,11 @@ func gethit():
 		set_process_input(false)
 		visible = false
 		$TimerSpawnBack.start()
+		
+		lives -= 1
+		print(lives)
+		emit_signal("lost_life")
+		
 		print("timmer starts")
 
 func _on_TimerSpawnBack_timeout():
