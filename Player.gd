@@ -13,6 +13,7 @@ var rotationDir = 0
 var rotationSpeed = .1
 var shootCD = 5
 var waiting = false
+var jetPlaying = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,6 +26,7 @@ func _ready():
 
 func _physics_process(delta):
 	get_input()
+	jetEffect()
 	rotation += rotationDir * rotationSpeed
 	velocity = move_and_slide(velocity)
 	wrap()
@@ -69,11 +71,23 @@ func get_input():
 		
 func shoot():
 	if shootCD == 0:
+		$LaserSound.play()
 		for child in Gun.get_children():
 			var b = Bullet.instance()
 			get_tree().current_scene.add_child(b)
 			b.transform = child.global_transform
 			shootCD = 5
+
+func jetEffect():
+	if Input.is_action_pressed("ui_up"):
+		if jetPlaying:
+			pass
+		else:
+			$JetSound.play()
+			jetPlaying = true
+	else:
+		$JetSound.stop()
+		jetPlaying = false
 
 func gethit():
 	if !waiting:
