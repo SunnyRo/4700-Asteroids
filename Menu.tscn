@@ -7,9 +7,9 @@
 script = ExtResource( 1 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 285.187
+margin_left = 290.187
 margin_top = 164.16
-margin_right = 699.187
+margin_right = 704.187
 margin_bottom = 407.16
 script = ExtResource( 2 )
 __meta__ = {
@@ -24,3 +24,6 @@ margin_bottom = 146.918
 text = "Clone
 "
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
