@@ -13,6 +13,9 @@ var rota = 0
 var speed = 0
 
 var rotationRate: float = 0
+
+onready var bullet_node = get_tree().get_root().find_node("ScoreNum",true,false)
+onready var bScore = 0
 # generate random # of speed and rotationRate
 func _ready():
 	speed = rand_range(minSpeed,maxSpeed)
@@ -42,6 +45,9 @@ func damage(amount: int):
 		var asteroid2 = SAsteroids.instance()
 		asteroid2.position = position
 		get_tree().current_scene.call_deferred("add_child", asteroid2)
+		
+		bScore += 10
+		bullet_node.update_score(bScore)
 		
 		queue_free()
 
