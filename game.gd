@@ -18,6 +18,7 @@ func _process(delta):
 		asteroidSpawning()
 		count = 0
 	count += 1
+	
 
 func asteroidSpawning():
 	var asteroid = BAsteroids.instance()
