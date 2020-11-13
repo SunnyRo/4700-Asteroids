@@ -8,15 +8,18 @@ var screen_edges : Array = []
 var BAsteroids = preload("res://BAsteroid.tscn")
 var angular_speed = 0
 var count = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 		pass
 	
 func _process(delta):
-	if count == 60:
+	if count == 150:
 		asteroidSpawning()
 		count = 0
 	count += 1
+	
+	
 
 func asteroidSpawning():
 	var asteroid = BAsteroids.instance()

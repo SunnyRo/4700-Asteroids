@@ -6,11 +6,15 @@ export var maxSpeed = 140
 export var minRotationRate = -10
 export var maxRotationRate = 10
 
-export var life: int = 1
+export var life: int = 5
 var SAsteroids = preload("res://SAsteroid.tscn")
 var velocity = Vector2(0,0)
 var rota = 0
 var speed = 0
+
+
+onready var bullet_node = get_tree().get_root().find_node("ScoreNum",true,false)
+onready var bScore = 0
 
 var rotationRate: float = 0
 # generate random # of speed and rotationRate
@@ -23,6 +27,7 @@ func _ready():
 	rota = deg2rad(rota)
 	velocity = Vector2(speed,0).rotated(rota)
 	rotationRate = rand_range(minRotationRate,maxRotationRate)
+	
 	
 
 func _physics_process(delta):
@@ -38,10 +43,13 @@ func damage(amount: int):
 	if life <= 0:
 		var asteroid1 = SAsteroids.instance()
 		asteroid1.position = position
-		get_tree().current_scene.call_deferred("add_child", asteroid1)
+		get_tree().current_scene.add_child(asteroid1)
 		var asteroid2 = SAsteroids.instance()
 		asteroid2.position = position
-		get_tree().current_scene.call_deferred("add_child", asteroid2)
+		get_tree().current_scene.add_child(asteroid2)
+		
+		bScore += 10
+		bullet_node.update_score(bScore)
 		
 		queue_free()
 

@@ -6,15 +6,23 @@ export var maxSpeed = 140
 export var minRotationRate = -10
 export var maxRotationRate = 10
 
-export var life: int = 1
+
+onready var node = get_tree().get_root().get_node("LivesNum")
+onready var bullet_node = get_tree().get_root().find_node("ScoreNum",true,false)
+
+export var life: int = 3
 
 var velocity = Vector2(0,0)
 var rota = 0
 var speed = 0
 
+onready var sScore = 0
+
 var rotationRate: float = 0
 # generate random # of speed and rotationRate
 func _ready():
+	
+	
 	speed = rand_range(minSpeed,maxSpeed)
 	
 	
@@ -23,6 +31,8 @@ func _ready():
 	rota = deg2rad(rota)
 	velocity = Vector2(speed,0).rotated(rota)
 	rotationRate = rand_range(minRotationRate,maxRotationRate)
+	node._ready()
+	
 	
 
 func _physics_process(delta):
@@ -35,7 +45,11 @@ func _physics_process(delta):
 # check the damage then remove asteroid from the scene
 func damage(amount: int):
 	life -= amount
+	
+	
 	if life <= 0:
+		sScore += 10
+		bullet_node.update_score(sScore)
 		queue_free()
 
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://SAsteroid.gd" type="Script" id=1]
+[ext_resource path="res://asteroid.gd" type="Script" id=1]
 [ext_resource path="res://Assets/asteroid.png" type="Texture" id=2]
 
-[node name="SAsteroid" type="Area2D" groups=[
+[node name="Asteroid" type="Area2D" groups=[
 "damageable",
 ]]
 script = ExtResource( 1 )
@@ -20,5 +20,5 @@ polygon = PoolVector2Array( -6.10849, -7.7106, -4.04832, -10.8945, -0.489841, -1
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 0.280931, 0.327754 )
 scale = Vector2( 1.57123, 1.53845 )
-[connection signal="body_entered" from="." to="." method="_on_Asteroid_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_Asteroid_area_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
