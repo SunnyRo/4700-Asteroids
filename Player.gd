@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 var Bullet = preload("res://Bullet.tscn")
-
+var explosions = preload("res://Explosion.tscn")
 onready var Gun := $Gun
 var inputVelocity = Vector2(0,0)
 var velocity = Vector2(0,0)
@@ -13,8 +13,8 @@ var rotationDir = 0
 var rotationSpeed = .1
 var shootCD = 5
 var waiting = false
+var immune = false
 var jetPlaying = false
-
 signal lost_life
 export var lives = 3
 # Called when the node enters the scene tree for the first time.
@@ -92,21 +92,31 @@ func jetEffect():
 		jetPlaying = false
 
 func gethit():
-	if !waiting:
+	if !waiting and !immune:
+		var explosion = explosions.instance()
+		$"/root/Game/ExplosionSound".play()
+		explosion.position = get_global_position()
+		get_tree().current_scene.add_child(explosion)
 		waiting = true
 		set_physics_process(false)
 		set_process_input(false)
 		visible = false
+		position.x = 1200
+		position.y = 1200
+		$JetSound.stop()
 		$TimerSpawnBack.start()
-		
 		lives -= 1
 		print(lives)
 		emit_signal("lost_life")
-		
-		print("timmer starts")
+		print("TimerSpawnBack starts")
+	else:
+		var explosion = explosions.instance()
+		$"/root/Game/ExplosionSound".play()
+		explosion.position = get_global_position()
+		get_tree().current_scene.add_child(explosion)
 
 func _on_TimerSpawnBack_timeout():
-	print("timmer stopped")
+	print("TimerSpawnBack stops")
 	set_physics_process(true)
 	set_process_input(true)
 	visible = true
@@ -114,4 +124,16 @@ func _on_TimerSpawnBack_timeout():
 	position.x = get_viewport_rect().size.x/2
 	position.y = get_viewport_rect().size.y/2
 	$TimerSpawnBack.stop()
+	$TimerImmune.start()
+	print("TimmerImmune starts")
+	immune = true
+	set_modulate(Color(255,0,0))
 	waiting = false
+
+
+func _on_TimerImmune_timeout():
+	print("TimmerImmune stops")
+	immune = false
+	set_modulate(Color(1,1,1,1))
+	$TimerImmune.stop()
+	

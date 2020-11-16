@@ -54,7 +54,7 @@ position = Vector2( 15.1361, -8.04106 )
 position = Vector2( 15.2412, 7.98853 )
 
 [node name="TimerSpawnBack" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 
 [node name="LaserSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
@@ -63,4 +63,8 @@ volume_db = -1.0
 [node name="JetSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 volume_db = 6.058
+
+[node name="TimerImmune" type="Timer" parent="."]
+wait_time = 3.0
 [connection signal="timeout" from="TimerSpawnBack" to="." method="_on_TimerSpawnBack_timeout"]
+[connection signal="timeout" from="TimerImmune" to="." method="_on_TimerImmune_timeout"]
