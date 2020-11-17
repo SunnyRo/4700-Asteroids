@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Clone/Objects/SAsteroid.gd" type="Script" id=1]
+[ext_resource path="res://Assets/asteroid.png" type="Texture" id=2]
+
+[node name="SAsteroid" type="Area2D" groups=[
+"damageable",
+]]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 16, 48, 30, 30 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PoolVector2Array( -6.10849, -7.7106, -4.04832, -10.8945, -0.489841, -12.5801, 1.94491, -12.9547, 4.56695, -13.8911, 8.21907, -13.7038, 9.24916, -10.8009, 9.24916, -8.74069, 9.15551, -6.77416, 10.5602, -3.77755, 12.714, -2.56017, 13.6504, -0.406355, 14.025, 0.998308, 14.025, 4.83772, 14.1187, 8.11526, 12.2458, 8.20891, 11.6839, 9.42628, 10.6538, 11.3928, 9.71738, 13.0784, 8.21907, 14.0149, 5.69068, 14.3894, 1.00847, 14.1085, -11.8208, 14.2021, -13.9746, 11.6737, -14.3492, 1.1856, -10.6034, -3.21568, -9.1051, -3.77755, -8.91782, -5.08856, -6.20214, -5.27585 )
+[connection signal="body_entered" from="." to="." method="_on_Asteroid_body_entered"]

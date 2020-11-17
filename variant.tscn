@@ -8,7 +8,7 @@
 [ext_resource path="res://Assets/Explosion8.wav" type="AudioStream" id=6]
 [ext_resource path="res://Clone/Objects/LivesNum.gd" type="Script" id=7]
 [ext_resource path="res://Clone/Objects/ScoreNum.gd" type="Script" id=8]
-[ext_resource path="res://game.gd" type="Script" id=9]
+[ext_resource path="res://variant.gd" type="Script" id=9]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 9 )
