@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Credits.gd" type="Script" id=2]
+
+[node name="GameOver" type="Node2D"]
+
+[node name="GameOver" type="Label" parent="."]
+margin_left = 458.418
+margin_top = 150.0
+margin_right = 531.418
+margin_bottom = 164.0
+text = "Game Over"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="Button" parent="."]
+margin_left = 420.335
+margin_top = 215.0
+margin_right = 570.335
+margin_bottom = 287.157
+text = "Main Menu"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Button" parent="."]
+margin_left = 420.0
+margin_top = 345.0
+margin_right = 570.0
+margin_bottom = 417.0
+text = "Credits"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
