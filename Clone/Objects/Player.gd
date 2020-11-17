@@ -108,7 +108,6 @@ func gethit():
 		lives -= 1
 		print(lives)
 		emit_signal("lost_life")
-		print("TimerSpawnBack starts")
 	else:
 		var explosion = explosions.instance()
 		$"/root/Game/ExplosionSound".play()
@@ -116,7 +115,6 @@ func gethit():
 		get_tree().current_scene.add_child(explosion)
 
 func _on_TimerSpawnBack_timeout():
-	print("TimerSpawnBack stops")
 	set_physics_process(true)
 	set_process_input(true)
 	visible = true
@@ -125,14 +123,12 @@ func _on_TimerSpawnBack_timeout():
 	position.y = get_viewport_rect().size.y/2
 	$TimerSpawnBack.stop()
 	$TimerImmune.start()
-	print("TimmerImmune starts")
 	immune = true
 	set_modulate(Color(255,0,0))
 	waiting = false
 
 
 func _on_TimerImmune_timeout():
-	print("TimmerImmune stops")
 	immune = false
 	set_modulate(Color(1,1,1,1))
 	$TimerImmune.stop()

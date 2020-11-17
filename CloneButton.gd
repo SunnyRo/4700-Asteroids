@@ -12,4 +12,4 @@ func _ready():
 
 
 func _pressed():
-	get_tree().change_scene("game.tscn")
+	get_tree().change_scene("clone.tscn")
