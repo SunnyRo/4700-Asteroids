@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://BAsteroid.gd" type="Script" id=1]
+[ext_resource path="res://Clone/Objects/BAsteroid.gd" type="Script" id=1]
 [ext_resource path="res://Assets/asteroid.png" type="Texture" id=2]
 
 [node name="BAsteroid" type="Area2D" groups=[

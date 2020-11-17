@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 
-var Bullet = preload("res://Bullet.tscn")
-var explosions = preload("res://Explosion.tscn")
+var Bullet = preload("res://Clone/Objects/Bullet.tscn")
+var explosions = preload("res://Clone/Objects/Explosion.tscn")
 onready var Gun := $Gun
 var inputVelocity = Vector2(0,0)
 var velocity = Vector2(0,0)

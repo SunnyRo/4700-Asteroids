@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Karstenholymoly_-_Stardust_(Ziggy_is_coming)_1.ogg-7804c232cc4462e030659babd4ecdfd8.oggstr"
+
+[deps]
+
+source_file="res://Assets/Karstenholymoly_-_Stardust_(Ziggy_is_coming)_1.ogg"
+dest_files=[ "res://.import/Karstenholymoly_-_Stardust_(Ziggy_is_coming)_1.ogg-7804c232cc4462e030659babd4ecdfd8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

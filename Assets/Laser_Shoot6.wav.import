@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Laser_Shoot6.wav-2ee0be4e1e32f90d2d825a5e57cff1a3.sample"
+path="res://.import/Laser_Shoot6.wav-5503bbceaecc21f01b778a49468c5e92.sample"
 
 [deps]
 
-source_file="res://Laser_Shoot6.wav"
-dest_files=[ "res://.import/Laser_Shoot6.wav-2ee0be4e1e32f90d2d825a5e57cff1a3.sample" ]
+source_file="res://Assets/Laser_Shoot6.wav"
+dest_files=[ "res://.import/Laser_Shoot6.wav-5503bbceaecc21f01b778a49468c5e92.sample" ]
 
 [params]
 

@@ -2,7 +2,7 @@ extends Area2D
 
 var speed = 750
 var life = 0
-var explosions = preload("res://Explosion.tscn")
+var explosions = preload("res://Clone/Objects/Explosion.tscn")
 
 func _physics_process(delta):
 	position += transform.x * speed * delta

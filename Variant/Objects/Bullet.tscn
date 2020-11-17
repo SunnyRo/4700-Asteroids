@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Clone/Objects/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Ammo.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4.28109, 2.29385 )
+
+[node name="Bullet" type="Area2D"]
+position = Vector2( -0.00964928, -0.00433445 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.00121307, -0.00125313 )
+scale = Vector2( 0.990848, 0.979861 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.0120735, 0.0158477 )
+rotation = 1.5708
+scale = Vector2( 0.0602041, 0.0756394 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 600, 792, 32, 112 )
+[connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]

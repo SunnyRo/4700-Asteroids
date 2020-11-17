@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Explosion8.wav-daffe275107b51df13704ab6697d97cc.sample"
+path="res://.import/Explosion8.wav-fd3b9f4f50c8655c033b0fb8c4366681.sample"
 
 [deps]
 
-source_file="res://Explosion8.wav"
-dest_files=[ "res://.import/Explosion8.wav-daffe275107b51df13704ab6697d97cc.sample" ]
+source_file="res://Assets/Explosion8.wav"
+dest_files=[ "res://.import/Explosion8.wav-fd3b9f4f50c8655c033b0fb8c4366681.sample" ]
 
 [params]
 
