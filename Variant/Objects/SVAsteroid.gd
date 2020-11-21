@@ -78,14 +78,10 @@ func _on_Asteroid_body_entered(body):
 	queue_free()
 	
 func _on_SVAsteroid_area_entered(area):
-		#print("hello")
-		#print(area.name)
-		
 		if cantCollide == false:
 			if area.is_in_group("SAsteroid"):
 				var newPosition = area.position
 				area.queue_free()
-				print("helloooooo")
 				var asteroid = BAsteroids.instance()
 				asteroid.position = newPosition
 				get_tree().current_scene.call_deferred("add_child", asteroid)
