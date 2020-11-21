@@ -8,6 +8,7 @@ var screen_edges : Array = []
 var BAsteroids = preload("res://Variant/Objects/BAsteroid.tscn")
 var angular_speed = 0
 var count = 0
+var sameCollision = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 		randomize()

@@ -7,15 +7,21 @@ export var minRotationRate = -10
 export var maxRotationRate = 10
 
 export var life: int = 1
-var SAsteroids = preload("res://Variant/Objects/SVAsteroid.tscn")
+
 var velocity = Vector2(0,0)
 var rota = 0
 var speed = 0
 
 var rotationRate: float = 0
 
+
+var timer = null
+var collisionDelay = 2
+var cantCollide = true
+
+var BAsteroids = load("res://Variant/Objects/BAsteroid.tscn")
 onready var bullet_node = get_tree().get_root().find_node("ScoreNum",true,false)
-onready var bScore = 0
+onready var sScore = 0
 # generate random # of speed and rotationRate
 func _ready():
 	speed = rand_range(minSpeed,maxSpeed)
@@ -27,7 +33,15 @@ func _ready():
 	velocity = Vector2(speed,0).rotated(rota)
 	rotationRate = rand_range(minRotationRate,maxRotationRate)
 	
+	timer = Timer.new()
+	timer.set_one_shot(true)
+	timer.set_wait_time(collisionDelay)
+	timer.connect("timeout", self, "_timeout_done")
+	add_child(timer) 
+	timer.start() 
 	
+func _timeout_done():
+	cantCollide = false
 
 func _physics_process(delta):
 	
@@ -40,17 +54,8 @@ func _physics_process(delta):
 func damage(amount: int):
 	life -= amount
 	if life <= 0:
-		var asteroid1 = SAsteroids.instance()
-		asteroid1.position = position
-		get_tree().current_scene.call_deferred("add_child", asteroid1)
-		timer = SceneTree
-		var asteroid2 = SAsteroids.instance()
-		asteroid2.position = position
-		get_tree().current_scene.call_deferred("add_child", asteroid2)
-		
-		bScore += 10
-		bullet_node.update_score(bScore)
-		
+		sScore += 10
+		bullet_node.update_score(sScore)
 		queue_free()
 
 
@@ -68,8 +73,21 @@ func wrap():
 		position.y = 0
 
 
-func _on_BAsteroid_body_entered(body):
+func _on_Asteroid_body_entered(body):
 	body.gethit()
 	queue_free()
-
-
+	
+func _on_SVAsteroid_area_entered(area):
+		#print("hello")
+		#print(area.name)
+		
+		if cantCollide == false:
+			if area.is_in_group("SAsteroid"):
+				var newPosition = area.position
+				area.queue_free()
+				print("helloooooo")
+				var asteroid = BAsteroids.instance()
+				asteroid.position = newPosition
+				get_tree().current_scene.call_deferred("add_child", asteroid)
+		else:
+			pass
