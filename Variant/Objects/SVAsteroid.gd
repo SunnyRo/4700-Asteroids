@@ -14,7 +14,6 @@ var speed = 0
 
 var rotationRate: float = 0
 
-
 var timer = null
 var collisionDelay = 2
 var cantCollide = true
@@ -80,10 +79,13 @@ func _on_Asteroid_body_entered(body):
 func _on_SVAsteroid_area_entered(area):
 		if cantCollide == false:
 			if area.is_in_group("SAsteroid"):
+				Collisions.collisions+=1
 				var newPosition = area.position
 				area.queue_free()
-				var asteroid = BAsteroids.instance()
-				asteroid.position = newPosition
-				get_tree().current_scene.call_deferred("add_child", asteroid)
+				if Collisions.collisions == 2:
+					var asteroid = BAsteroids.instance()
+					asteroid.position = newPosition
+					get_tree().current_scene.call_deferred("add_child", asteroid)
+					Collisions.collisions = 0
 		else:
 			pass

@@ -14,6 +14,7 @@ var speed = 0
 
 var rotationRate: float = 0
 
+
 onready var bullet_node = get_tree().get_root().find_node("ScoreNum",true,false)
 onready var bScore = 0
 # generate random # of speed and rotationRate
