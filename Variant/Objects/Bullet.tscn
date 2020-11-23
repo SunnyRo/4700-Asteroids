@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Clone/Objects/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Variant/Objects/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Ammo.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Clone/Objects/SAsteroid.gd" type="Script" id=1]
+[ext_resource path="res://Variant/Objects/SAsteroid.gd" type="Script" id=1]
 [ext_resource path="res://Assets/asteroid.png" type="Texture" id=2]
 
 [node name="SAsteroid" type="Area2D" groups=[
