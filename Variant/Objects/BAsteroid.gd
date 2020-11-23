@@ -68,7 +68,8 @@ func wrap():
 
 
 func _on_BAsteroid_body_entered(body):
-	body.gethit()
-	queue_free()
+	if body.is_in_group("player"):
+		body.gethit()
+		queue_free()
 
 
