@@ -7,7 +7,7 @@ export var minRotationRate = -10
 export var maxRotationRate = 10
 
 export var life: int = 1
-var SAsteroids = preload("res://Variant/Objects/SVAsteroid.tscn")
+var SAsteroids = preload("res://Clone/Objects/SAsteroid.tscn")
 var velocity = Vector2(0,0)
 var rota = 0
 var speed = 0

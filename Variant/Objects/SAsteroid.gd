@@ -17,7 +17,7 @@ var rotationRate: float = 0
 var timer = null
 var collisionDelay = 2
 var cantCollide = true
-
+var Lights = load("res://Variant/Objects/LightEffect.tscn")
 var BAsteroids = load("res://Variant/Objects/BAsteroid.tscn")
 onready var bullet_node = get_tree().get_root().find_node("ScoreNum",true,false)
 onready var sScore = 0
@@ -83,6 +83,9 @@ func _on_SVAsteroid_area_entered(area):
 				var newPosition = area.position
 				area.queue_free()
 				if Collisions.collisions == 2:
+					var light = Lights.instance()
+					light.position = newPosition
+					get_tree().current_scene.add_child(light)
 					var asteroid = BAsteroids.instance()
 					asteroid.position = newPosition
 					get_tree().current_scene.call_deferred("add_child", asteroid)
