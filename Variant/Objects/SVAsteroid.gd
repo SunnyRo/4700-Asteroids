@@ -14,6 +14,11 @@ var speed = 0
 
 var rotationRate: float = 0
 
+var timer = null
+var collisionDelay = 2
+var cantCollide = true
+
+var BAsteroids = load("res://Variant/Objects/BAsteroid.tscn")
 onready var bullet_node = get_tree().get_root().find_node("ScoreNum",true,false)
 onready var sScore = 0
 # generate random # of speed and rotationRate
@@ -27,6 +32,15 @@ func _ready():
 	velocity = Vector2(speed,0).rotated(rota)
 	rotationRate = rand_range(minRotationRate,maxRotationRate)
 	
+	timer = Timer.new()
+	timer.set_one_shot(true)
+	timer.set_wait_time(collisionDelay)
+	timer.connect("timeout", self, "_timeout_done")
+	add_child(timer) 
+	timer.start() 
+	
+func _timeout_done():
+	cantCollide = false
 
 func _physics_process(delta):
 	
@@ -61,3 +75,17 @@ func wrap():
 func _on_Asteroid_body_entered(body):
 	body.gethit()
 	queue_free()
+	
+func _on_SVAsteroid_area_entered(area):
+		if cantCollide == false:
+			if area.is_in_group("SAsteroid"):
+				Collisions.collisions+=1
+				var newPosition = area.position
+				area.queue_free()
+				if Collisions.collisions == 2:
+					var asteroid = BAsteroids.instance()
+					asteroid.position = newPosition
+					get_tree().current_scene.call_deferred("add_child", asteroid)
+					Collisions.collisions = 0
+		else:
+			pass

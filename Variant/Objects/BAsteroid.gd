@@ -7,7 +7,7 @@ export var minRotationRate = -10
 export var maxRotationRate = 10
 
 export var life: int = 1
-var SAsteroids = preload("res://Variant/Objects/SAsteroid.tscn")
+var SAsteroids = preload("res://Variant/Objects/SVAsteroid.tscn")
 var velocity = Vector2(0,0)
 var rota = 0
 var speed = 0
@@ -27,6 +27,7 @@ func _ready():
 	velocity = Vector2(speed,0).rotated(rota)
 	rotationRate = rand_range(minRotationRate,maxRotationRate)
 	
+	
 
 func _physics_process(delta):
 	position += velocity * delta
@@ -41,6 +42,7 @@ func damage(amount: int):
 		var asteroid1 = SAsteroids.instance()
 		asteroid1.position = position
 		get_tree().current_scene.call_deferred("add_child", asteroid1)
+		timer = SceneTree
 		var asteroid2 = SAsteroids.instance()
 		asteroid2.position = position
 		get_tree().current_scene.call_deferred("add_child", asteroid2)
