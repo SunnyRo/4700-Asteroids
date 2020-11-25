@@ -83,6 +83,7 @@ func _on_SVAsteroid_area_entered(area):
 				var newPosition = area.position
 				area.queue_free()
 				if Collisions.collisions == 2:
+					$AsteroidForming.play()
 					var light = Lights.instance()
 					light.position = newPosition
 					get_tree().current_scene.add_child(light)
