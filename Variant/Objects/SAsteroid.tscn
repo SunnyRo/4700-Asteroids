@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/asteroid.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Asteroids (1).png" type="Texture" id=1]
 [ext_resource path="res://Variant/Objects/SAsteroid.gd" type="Script" id=2]
 
 [node name="SVAsteroid" type="Area2D" groups=[
@@ -10,14 +10,16 @@
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.38782, 0.299112 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 16, 48, 30, 30 )
+region_rect = Rect2( 882, 418, 103, 106 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." groups=[
 "SAsteroid",
 ]]
-visible = false
-polygon = PoolVector2Array( -6.10849, -7.7106, -4.04832, -10.8945, -0.489841, -12.5801, 1.94491, -12.9547, 4.56695, -13.8911, 8.21907, -13.7038, 9.24916, -10.8009, 9.24916, -8.74069, 9.15551, -6.77416, 10.5602, -3.77755, 12.714, -2.56017, 13.6504, -0.406355, 14.025, 0.998308, 14.025, 4.83772, 14.1187, 8.11526, 12.2458, 8.20891, 11.6839, 9.42628, 10.6538, 11.3928, 9.71738, 13.0784, 8.21907, 14.0149, 5.69068, 14.3894, 1.00847, 14.1085, -11.8208, 14.2021, -13.9746, 11.6737, -14.3492, 1.1856, -10.6034, -3.21568, -9.1051, -3.77755, -8.91782, -5.08856, -6.20214, -5.27585 )
+position = Vector2( -3.00339, 1.25141 )
+scale = Vector2( 2.1962, 2.03552 )
+polygon = PoolVector2Array( -2.39697, -7.64843, -0.573589, -8.14026, 1.5157, -8.22223, 3.03519, -7.97632, 5.61831, -6.82871, 7.09981, -5.51717, 7.89754, -4.16463, 8.99917, -2.32027, 9.64495, -0.393932, 10.2527, 1.5324, 10.1388, 3.8686, 8.96118, 5.38508, 7.4417, 6.32775, 5.16247, 6.94254, 4.09883, 7.0655, 2.88324, 6.94254, 1.62967, 6.90155, 0.528038, 6.40972, -1.29534, 6.32775, -2.62489, 5.95888, -3.72652, 5.75395, -4.56224, 5.26212, -4.6762, 4.97522, -5.24601, 4.7293, -5.47393, 3.45874, -5.01808, 3.00789, -6.34763, 1.94226, -7.0314, 1.73733, -7.22134, 1.12254, -7.41127, -0.0660449, -7.56322, -1.17266, -6.65153, -2.60717, -5.47393, -3.6728, -4.86613, -5.80407, -3.72652, -7.07463 )
 [connection signal="area_entered" from="." to="." method="_on_SVAsteroid_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Asteroid_body_entered"]

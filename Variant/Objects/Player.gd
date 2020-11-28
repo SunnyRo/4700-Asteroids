@@ -78,7 +78,7 @@ func shoot():
 			var b = Bullet.instance()
 			get_tree().current_scene.add_child(b)
 			b.transform = child.global_transform
-			shootCD = 5
+			shootCD = 8
 
 func jetEffect():
 	if Input.is_action_pressed("ui_up"):
