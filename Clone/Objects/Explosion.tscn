@@ -17,6 +17,7 @@ animations = [ {
 
 [node name="Explosion" type="AnimatedSprite"]
 frames = SubResource( 1 )
+frame = 2
 playing = true
 script = ExtResource( 1 )
 [connection signal="animation_finished" from="." to="." method="_on_Explosion_animation_finished"]

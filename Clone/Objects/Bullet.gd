@@ -2,7 +2,6 @@ extends Area2D
 
 var speed = 750
 var life = 0
-var explosions = preload("res://Clone/Objects/Explosion.tscn")
 
 func _physics_process(delta):
 	position += transform.x * speed * delta
@@ -32,9 +31,5 @@ func lifeCount():
 func _on_Bullet_area_entered(area):
 	if area.is_in_group("damageable"):
 		area.damage(1)
-		var explosion = explosions.instance()
-		$"/root/Game/ExplosionSound".play()
-		explosion.position = get_global_position()
-		get_tree().current_scene.add_child(explosion)
 		queue_free()
 		

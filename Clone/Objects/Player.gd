@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 
 var Bullet = preload("res://Clone/Objects/Bullet.tscn")
-var explosions = preload("res://Clone/Objects/Explosion.tscn")
 onready var Gun := $Gun
 var inputVelocity = Vector2(0,0)
 var velocity = Vector2(0,0)
@@ -93,10 +92,6 @@ func jetEffect():
 
 func gethit():
 	if !waiting and !immune:
-		var explosion = explosions.instance()
-		$"/root/Game/ExplosionSound".play()
-		explosion.position = get_global_position()
-		get_tree().current_scene.add_child(explosion)
 		waiting = true
 		set_physics_process(false)
 		set_process_input(false)
@@ -109,10 +104,7 @@ func gethit():
 		print(lives)
 		emit_signal("lost_life")
 	else:
-		var explosion = explosions.instance()
-		$"/root/Game/ExplosionSound".play()
-		explosion.position = get_global_position()
-		get_tree().current_scene.add_child(explosion)
+		pass
 
 func _on_TimerSpawnBack_timeout():
 	set_physics_process(true)
